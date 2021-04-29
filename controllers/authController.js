@@ -28,6 +28,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     const newUser = await User.create(req.body);
     createSendToken(newUser, 201, res);
   } catch (err) {
+    console.log(err);
     res.status(400).json({
       status: "fail",
       message: err,
@@ -80,7 +81,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
 
   // 4) Check if user changed password after the token was issued
-  if (currentUser.changedPasswordAfter(decoded.iat)) {
+  if (currentUser.changedPasswordAfter(decoded.id)) {
     return next(
       new AppError("User recently changed password! Please log in again.", 401)
     );
