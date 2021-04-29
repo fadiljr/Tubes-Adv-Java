@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 
 app.use("/api/v1/users", userRouter);
 
-app.all("*", (req, res, nest) => {
+app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
