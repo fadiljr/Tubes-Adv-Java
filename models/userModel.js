@@ -1,4 +1,3 @@
-const crypto = require("crypto");
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
@@ -23,13 +22,7 @@ const userSchema = new mongoose.Schema({
   phone_number: String,
   role: {
     type: String,
-    enum: [
-      "user",
-      "admin",
-      "supplier",
-      "supplier-operator",
-      "supplier-courier",
-    ],
+    enum: ["user", "admin", "supplier", "sales"],
     default: "user",
   },
   password: {
