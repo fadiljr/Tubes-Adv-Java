@@ -1,7 +1,5 @@
 const Barang = require("../models/productsModel");
 const catchAsync = require("./../utils/catchAsync");
-const { promisify } = require("util");
-const AppError = require("../utils/appError");
 
 exports.getAllBarang = catchAsync(async (req, res, next) => {
   const barang = await Barang.find();
